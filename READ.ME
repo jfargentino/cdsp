@@ -1,0 +1,169 @@
+COMMENTS ABOUT THE PROGRAMS ON THIS DISK
+----------------------------------------
+
+In order to compile the DSP programs on this disk, a C compiler
+which implements some of the ANSI C standard is required.  A C
+compiler which is only "K & R" compatible may not compile these
+programs primarily because of the prototypes used in the include
+files.  By removing the argument type checking in all the
+prototypes in all the include files, the code should compile on
+non-ANSI compilers.  These programs have been tested using
+Borland's TURBO C version 2.0, Microsoft C versions 4.0 and 5.1
+for the IBM/PC.  The programs have also been tested on several
+UNIX platforms.  The following instructions provide an easy
+method to compile and run the DSP programs using TURBO C or
+Microsoft C.  The first step is to copy the entire contents of
+this disk to a subdirectory where all compilation will take
+place.
+
+
+DSP LIBRARY
+-----------
+
+The best way to use the code on this disk is to create a library
+of DSP functions which can be linked with the main programs to
+form executable code.  For TURBO C this is accomplished using
+the following two commands:
+
+tcc -c -mc *.c
+tlib dsp +get+diskio+filter+dft+matrix+matio+image
+
+For Microsoft C the following two commands are used:
+
+cl /AC /c *.c
+lib dsp get+diskio+filter+dft+matrix+matio+image;
+
+In either case, these commands will compile all of the source
+code on the disk (which can take a while) using the compact
+memory model (so that large amounts of data can be manipulated
+on the PC) and then create a library file called DSP.LIB.  The
+source code for the executable programs is also compiled so that
+only a link is required to run one of the executable programs
+(see below).
+
+The following table indicates the name of each function, the
+source file name and the section in the text where more
+information is located:
+
+ Source            Function                    Text
+filename             names                    Section
+--------  ---------------------------------   -------
+GET.C     get_string, get_int, get_float        3.1
+
+DISKIO.C  open_read, open_write, read_record,   3.2
+          write_record, seek_record,
+          read_float_record, read_trailer,
+          write_trailer, append_trailer
+
+FILTER.C  fir_filter_array, fir_filter_int      4.2
+          iir_filter, fir_filter                4.3, 4.4
+          gaussian, uniform                     4.7
+
+DFT.C     dft, idft, fft, ifft,                 5.1 - 5.4
+          ham, han, triang, black, harris       5.5
+          rfft, log2                            5.7, 5.8
+
+MATRIX.C  matrix_allocate, matrix_free,         6.2
+          matrix_print, matrix_scale,
+          matrix_crop, matrix_transpose,
+          matrix_add, matrix_sub,
+          matrix_mult_pwise, matrix_mult,
+          matrix_invert, matrix_det
+
+MATIO.C   matrix_read, matrix_write             6.3
+
+IMAGE.C   dct2d, idct2d, histogram,             7.1, 7.2
+          convol2d, nonlin2d                    7.3, 7.4
+
+
+EXECUTABLE PROGRAMS
+-------------------
+
+After compiling all the source code on the disk and creating the
+DSP library, any of the executable programs (programs which
+contain a main program) can be linked using TURBO C as follows:
+
+tcc -mc <filename>.obj dsp.lib
+
+Where <filename> is the name of one of the executable programs.
+If an executable program is changed, it can be compiled and
+linked using:
+
+tcc -mc <filename>.c dsp.lib
+
+The integrated environment of TURBO C can also be used by making
+a two line project file consisting of the executable name on the
+first line and DSP.LIB on the second.  The executable can then
+be changed, compiled and linked in the integrated environment.
+
+For Microsoft C the command to do only the link is:
+
+cl <filename> /link dsp
+
+For Microsoft C to compile and link the command is:
+
+cl /AC <filename>.c /link dsp
+
+
+The following table indicates the name of each program, a short
+description of its purpose, and the section in the text where
+more information is located:
+
+Program     Section                 Description
+File Name    Number
+----------  --------   -----------------------------------------
+APPTRAIL.C    3.2.3    Append more text on an existing trailer
+MKWAVE.C      3.3      Generates sum of cosines signal
+PLOT.EXE      3.3      Plot DSP data format data on CGA display
+ADDNOISE.C    4.7.1    Add noise to DSP data or create noise
+FIRFILT.C     4.2.1    FIR filter the records in a DSP data file
+IIRDEZN.C     4.3.1    Make IIR filter from analog prototype
+IIRFILT.C     4.3.2    IIR filter the records in a DSP data file
+INTERP.C      4.5.1    2:1 and 3:1 FIR filter interpolation
+MEDIAN.C      4.8.2    Conditionally median filter a data record
+QUANTIZE.C    4.7.4    Quantize a record in a DSP data file
+REALCMX.C     4.6.1    Convert an RF data record to complex data
+REALTIME.C    4.4.2    Demonstrate real time filtering
+STATS.C       4.7.2    Find min, max, mean and variance of data
+FASTCON.C     5.9      Fast convolution using the FFT
+FFTTEST.C     5.8.1    Demonstrate and test FFT and windows
+IDFTTEST.C    5.8.2    Demonstrate and test DFT and IDFT
+IFFTTEST.C    5.8.3    Demonstrate and test FFT and IFFT
+INTFFT.C      5.11     Interpolate 2:1 using FFT and IFFT
+PSE.C         5.10     Power spectral estimation using the FFT
+RFFTTEST.C    5.8.4    Exercise the rfft function for real FFTs
+COR.C         6.1.3    Perform cross or auto correlation
+LSFIT.C       6.4.1    Weighted least squares fit
+MATTST.C      6.2.5    Test matrix functions
+VECTST.C      6.1.2    Test vector macros
+ADNOIS2D.C    7.3.3    Add noise to existing matrix data
+COMPRESS.C    7.1.5    Compress image using the DCT
+EDETECT.C     7.3.5    Edge detection on an image
+EXPAND.C      7.1.6    Expand compressed image using inverse DCT
+FLATTEN.C     7.2.2    Level the histogram of an image
+MSEOFPIC.C    7.1.7    Finds mean squared difference of images
+NONLIN2D.C    7.4.1    Min, max, or median filtering
+SMOOTH.C      7.3.3    Convolves an image with a 3x3 Gaussian
+
+
+PLOT.EXE
+--------
+
+This IBM/PC program reads DSP data records and plots the samples
+on an IBM compatible CGA display device.  Only the executable
+file is provided on this disk.  The program can also generate a
+hard copy of the display on an EPSON (or IBM) compatible
+printer.  The program requires only the filename as an argument.
+Usage is as follows:
+
+    PLOT <filename>
+
+After the plot is completed, the user can enter a single
+character which provides three choices as follows:
+
+    Q,q - terminate the program.
+    P   - generate a hard copy of the display on EPSON printer.
+    
+Any other character will cause the program to plot the next
+record in the DSP data file (if any).
+

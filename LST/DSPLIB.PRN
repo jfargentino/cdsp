@@ -1,0 +1,54 @@
+_append_trailer...diskio            _black............dft
+_convol2d.........image             _dct2d............image
+_dft..............dft               _fft..............dft
+_fir_filter.......filter            _fir_filter_array..filter
+_fir_filter_int...filter            _gaussian.........filter
+_get_float........get               _get_int..........get
+_get_string.......get               _ham..............dft
+_han..............dft               _harris...........dft
+_histogram........image             _idct2d...........image
+_idft.............dft               _ifft.............dft
+_iir_filter.......filter            _int_cmp..........image
+_log2.............dft               _matrix_add.......matrix
+_matrix_allocate..matrix            _matrix_crop......matrix
+_matrix_det.......matrix            _matrix_free......matrix
+_matrix_invert....matrix            _matrix_mult......matrix
+_matrix_mult_pwise..matrix          _matrix_print.....matrix
+_matrix_read......matio             _matrix_scale.....matrix
+_matrix_sub.......matrix            _matrix_transpose..matrix
+_matrix_write.....matio             _nonlin2d.........image
+_open_read........diskio            _open_write.......diskio
+_read_float_record..diskio          _read_record......diskio
+_read_trailer.....diskio            _rfft.............dft
+_seek_record......diskio            _triang...........dft
+_uniform..........filter            _write_record.....diskio
+_write_trailer....diskio            
+
+get               Offset: 00000010H  Code and data size: 432H
+  _get_float        _get_int          _get_string     
+
+diskio            Offset: 000007f0H  Code and data size: 1247H
+  _append_trailer   _open_read        _open_write       _read_float_record
+  _read_record      _read_trailer     _seek_record      _write_record
+  _write_trailer  
+
+filter            Offset: 000023c0H  Code and data size: 7e5H
+  _fir_filter       _fir_filter_array                   _fir_filter_int
+  _gaussian         _iir_filter       _uniform        
+
+dft               Offset: 00003280H  Code and data size: 1b11H
+  _black            _dft              _fft              _ham
+  _han              _harris           _idft             _ifft
+  _log2             _rfft             _triang         
+
+matrix            Offset: 00006170H  Code and data size: 4ef8H
+  _matrix_add       _matrix_allocate  _matrix_crop      _matrix_det
+  _matrix_free      _matrix_invert    _matrix_mult      _matrix_mult_pwise
+  _matrix_print     _matrix_scale     _matrix_sub       _matrix_transpose
+
+matio             Offset: 0000c660H  Code and data size: 65dH
+  _matrix_read      _matrix_write   
+
+image             Offset: 0000d0f0H  Code and data size: 10dbH
+  _convol2d         _dct2d            _histogram        _idct2d
+  _int_cmp          _nonlin2d       

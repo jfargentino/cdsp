@@ -1,0 +1,47 @@
+Stack Allocation = 32000 bytes
+
+ Start  Stop   Length Name                   Class
+ 00000H 0038BH 0038CH MKWAVE_TEXT            CODE
+ 0038CH 006E2H 00357H GET_TEXT               CODE
+ 006E4H 01541H 00E5EH DISKIO_TEXT            CODE
+ 01542H 05E34H 048F3H _TEXT                  CODE
+ 05E40H 0852FH 026F0H EMULATOR_TEXT          CODE
+ 08530H 08530H 00000H C_ETEXT                ENDCODE
+ 08530H 0869FH 00170H EMULATOR_DATA          FAR_DATA
+ 086A0H 087CFH 00130H FAR_BSS                FAR_BSS
+ 087D0H 08811H 00042H NULL                   BEGDATA
+ 08812H 08F07H 006F6H _DATA                  DATA
+ 08F08H 08F09H 00002H XIQC                   DATA
+ 08F0AH 08F17H 0000EH DBDATA                 DATA
+ 08F18H 08F25H 0000EH CDATA                  DATA
+ 08F26H 08F26H 00000H XIFB                   DATA
+ 08F26H 08F26H 00000H XIF                    DATA
+ 08F26H 08F26H 00000H XIFE                   DATA
+ 08F26H 08F26H 00000H XIB                    DATA
+ 08F26H 08F31H 0000CH XI                     DATA
+ 08F32H 08F32H 00000H XIE                    DATA
+ 08F32H 08F32H 00000H XPB                    DATA
+ 08F32H 08F35H 00004H XP                     DATA
+ 08F36H 08F36H 00000H XPE                    DATA
+ 08F36H 08F36H 00000H XCB                    DATA
+ 08F36H 08F36H 00000H XC                     DATA
+ 08F36H 08F36H 00000H XCE                    DATA
+ 08F36H 08F36H 00000H XCFB                   DATA
+ 08F36H 08F36H 00000H XCF                    DATA
+ 08F36H 08F36H 00000H XCFE                   DATA
+ 08F36H 094FDH 005C8H CONST                  CONST
+ 094FEH 09505H 00008H HDR                    MSG
+ 09506H 096E2H 001DDH MSG                    MSG
+ 096E3H 096E4H 00002H PAD                    MSG
+ 096E5H 096E5H 00001H EPAD                   MSG
+ 096E6H 09715H 00030H _BSS                   BSS
+ 09716H 09716H 00000H XOB                    BSS
+ 09716H 09716H 00000H XO                     BSS
+ 09716H 09716H 00000H XOE                    BSS
+ 09720H 0991FH 00200H c_common               BSS
+ 09920H 1161FH 07D00H STACK                  STACK
+
+ Origin   Group
+ 087D:0   DGROUP
+
+Program entry point at 0154:0012

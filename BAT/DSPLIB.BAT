@@ -1,0 +1,3 @@
+:   k:qcl /AL /c /Foobj\ c\*.c
+k:lib lib\dsplib -+obj\get-+obj\diskio-+obj\filter-+obj\dft-+obj\matrix-+obj\matio-+obj\image,lst\dsplib.prn;
+
